@@ -1,0 +1,108 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-01-31T23:01:22Z"
+  generation: 47
+  name: witcher-mock-api
+  namespace: argocd
+  resourceVersion: "1597899"
+  uid: 445d1916-01fd-41d2-a172-50d1ffb4ae59
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: k8s
+    repoURL: https://github.com/GMoraesGarcia/k8s-web-color-page
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-01-31T23:03:04Z"
+    deployedAt: "2023-01-31T23:03:04Z"
+    id: 0
+    revision: da051776226be120387e6ac4acf34a65c7154505
+    source:
+      path: k8s
+      repoURL: https://github.com/GMoraesGarcia/k8s-web-color-page
+      targetRevision: HEAD
+  - deployStartedAt: "2023-01-31T23:55:47Z"
+    deployedAt: "2023-01-31T23:55:47Z"
+    id: 1
+    revision: 245b1cbf1d36e5f2c9a7ab26edf39ca65f3d1bcc
+    source:
+      path: k8s
+      repoURL: https://github.com/GMoraesGarcia/k8s-web-color-page
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-01-31T23:55:47Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: 245b1cbf1d36e5f2c9a7ab26edf39ca65f3d1bcc
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2023-01-31T23:55:47Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/webcolor unchanged
+        name: webcolor
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/webcolor configured
+        name: webcolor
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 245b1cbf1d36e5f2c9a7ab26edf39ca65f3d1bcc
+      source:
+        path: k8s
+        repoURL: https://github.com/GMoraesGarcia/k8s-web-color-page
+        targetRevision: HEAD
+  reconciledAt: "2023-02-01T00:30:37Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: Service
+    name: webcolor
+    namespace: default
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: webcolor
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - fabricioveronez/web-page:green
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        path: k8s
+        repoURL: https://github.com/GMoraesGarcia/k8s-web-color-page
+        targetRevision: HEAD
+    revision: 245b1cbf1d36e5f2c9a7ab26edf39ca65f3d1bcc
+    status: Synced
